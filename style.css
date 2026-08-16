@@ -1,0 +1,679 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+}
+
+body {
+    font-family:
+        Arial,
+        "Noto Sans KR",
+        sans-serif;
+
+    background:
+        linear-gradient(
+            180deg,
+            #f6f1ff 0%,
+            #eefcf9 100%
+        );
+
+    color: #222;
+}
+
+
+/* =========================
+   전체 화면
+========================= */
+
+.game-container {
+    width: 100%;
+    max-width: 480px;
+    min-height: 100vh;
+
+    margin: 0 auto;
+    padding: 32px 20px 40px;
+
+    text-align: center;
+}
+
+
+/* =========================
+   헤더
+========================= */
+
+header {
+    margin-bottom: 28px;
+}
+
+.sub-title {
+    margin: 0;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    color: #8c7bc4;
+}
+
+h1 {
+    margin: 8px 0 0;
+
+    font-size: 32px;
+    line-height: 1.25;
+}
+
+
+/* =========================
+   카테고리 필터
+========================= */
+
+.filter-area {
+    display: flex;
+
+    gap: 8px;
+
+    margin-bottom: 28px;
+}
+
+.filter-btn {
+    flex: 1;
+
+    padding: 12px 8px;
+
+    border: none;
+    border-radius: 100px;
+
+    background: white;
+
+    color: #555;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 4px 12px
+        rgba(0, 0, 0, 0.06);
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.filter-btn:hover {
+    transform: translateY(-1px);
+}
+
+.filter-btn:active {
+    transform: scale(0.97);
+}
+
+.filter-btn.active {
+    background: #38bda7;
+    color: white;
+
+    box-shadow:
+        0 6px 16px
+        rgba(56, 189, 167, 0.25);
+}
+
+
+/* =========================
+   카드 영역
+========================= */
+
+.card-area {
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+
+    padding: 14px 0;
+
+    perspective: 1200px;
+}
+
+
+/* 뒤쪽 카드 장식 */
+
+.card-area::before {
+    content: "";
+
+    position: absolute;
+
+    width: calc(100% - 28px);
+    height: 430px;
+
+    top: 21px;
+    left: 14px;
+
+    border-radius: 26px;
+
+    background: #ddd6f7;
+
+    transform: rotate(-3deg);
+
+    z-index: 0;
+}
+
+.card-area::after {
+    content: "";
+
+    position: absolute;
+
+    width: calc(100% - 28px);
+    height: 430px;
+
+    top: 21px;
+    left: 14px;
+
+    border-radius: 26px;
+
+    background: #c9f0e8;
+
+    transform: rotate(3deg);
+
+    z-index: 1;
+}
+
+
+/* =========================
+   메인 카드
+========================= */
+
+.game-card {
+    position: relative;
+    z-index: 2;
+
+    width: 100%;
+    min-height: 430px;
+
+    padding: 30px;
+
+    border: none;
+    border-radius: 26px;
+
+    background: white;
+
+    color: #222;
+
+    box-shadow:
+        0 14px 34px
+        rgba(0, 0, 0, 0.12);
+
+    cursor: pointer;
+
+    transform-style: preserve-3d;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.game-card:hover {
+    box-shadow:
+        0 18px 38px
+        rgba(0, 0, 0, 0.14);
+}
+
+.game-card:active {
+    transform: scale(0.98);
+}
+
+
+/* =========================
+   카드 뒷면
+========================= */
+
+.card-back {
+    min-height: 370px;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    animation:
+        cardIdle 3s ease-in-out infinite;
+}
+
+.card-back p {
+    margin: 0;
+
+    color: #8b79c6;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    letter-spacing: 3px;
+}
+
+.card-back h2 {
+    margin: 10px 0 22px;
+
+    font-size: 28px;
+    line-height: 1.2;
+}
+
+.card-back span {
+    color: #888;
+
+    font-size: 14px;
+}
+
+
+/* 카드 대기 애니메이션 */
+
+@keyframes cardIdle {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+
+/* =========================
+   카드 앞면
+========================= */
+
+.card-front {
+    min-height: 370px;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+
+    animation:
+        cardContentShow 0.45s ease;
+}
+
+.card-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 34px;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    color: #7967ba;
+}
+
+.question {
+    margin: 0 0 30px;
+
+    font-size: 21px;
+    font-weight: 800;
+
+    line-height: 1.5;
+
+    word-break: keep-all;
+
+    animation:
+        questionShow 0.5s ease;
+}
+
+
+/* =========================
+   선택지
+========================= */
+
+.option {
+    width: 100%;
+
+    padding: 21px 18px;
+
+    border-radius: 18px;
+
+    background: #f6f3ff;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+.option p {
+    margin: 0;
+
+    font-size: 18px;
+    font-weight: 800;
+
+    line-height: 1.45;
+
+    word-break: keep-all;
+}
+
+
+/* 첫 번째 선택지 등장 */
+
+.option:first-of-type {
+    animation:
+        optionLeftShow 0.55s ease;
+}
+
+
+/* 두 번째 선택지 등장 */
+
+.option:last-of-type {
+    animation:
+        optionRightShow 0.55s ease;
+}
+
+
+/* VS */
+
+.vs {
+    display: block;
+
+    margin: 17px 0;
+
+    color: #777;
+
+    font-size: 18px;
+    font-weight: 900;
+
+    animation:
+        vsShow 0.65s ease;
+}
+
+
+/* =========================
+   다음 카드 버튼
+========================= */
+
+.next-btn {
+    width: 100%;
+
+    margin-top: 20px;
+    padding: 16px;
+
+    border: none;
+    border-radius: 16px;
+
+    background: #8c79c7;
+
+    color: white;
+
+    font-size: 17px;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 6px 16px
+        rgba(140, 121, 199, 0.25);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.next-btn:hover {
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 8px 20px
+        rgba(140, 121, 199, 0.3);
+}
+
+.next-btn:active {
+    transform: scale(0.97);
+}
+
+
+/* =========================
+   셔플 애니메이션
+========================= */
+
+.game-card.shuffle {
+    animation:
+        cardShuffle 0.9s ease-in-out;
+}
+
+@keyframes cardShuffle {
+    0% {
+        transform:
+            translateX(0)
+            translateY(0)
+            rotate(0deg);
+    }
+
+    12% {
+        transform:
+            translateX(-35px)
+            translateY(-3px)
+            rotate(-5deg);
+    }
+
+    25% {
+        transform:
+            translateX(38px)
+            translateY(2px)
+            rotate(5deg);
+    }
+
+    38% {
+        transform:
+            translateX(-30px)
+            translateY(-2px)
+            rotate(-4deg);
+    }
+
+    52% {
+        transform:
+            translateX(30px)
+            translateY(2px)
+            rotate(4deg);
+    }
+
+    66% {
+        transform:
+            translateX(-18px)
+            rotate(-3deg);
+    }
+
+    80% {
+        transform:
+            translateX(14px)
+            rotate(2deg);
+    }
+
+    100% {
+        transform:
+            translateX(0)
+            translateY(0)
+            rotate(0deg);
+    }
+}
+
+
+/* =========================
+   플립 애니메이션
+========================= */
+
+.game-card.flip {
+    animation:
+        cardFlip 0.6s ease-in-out;
+}
+
+@keyframes cardFlip {
+    0% {
+        transform:
+            perspective(1000px)
+            rotateY(0deg);
+    }
+
+    50% {
+        transform:
+            perspective(1000px)
+            rotateY(90deg)
+            scale(0.96);
+    }
+
+    100% {
+        transform:
+            perspective(1000px)
+            rotateY(0deg);
+    }
+}
+
+
+/* =========================
+   콘텐츠 등장 애니메이션
+========================= */
+
+@keyframes cardContentShow {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+@keyframes questionShow {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+@keyframes optionLeftShow {
+    from {
+        opacity: 0;
+        transform: translateX(-22px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+@keyframes optionRightShow {
+    from {
+        opacity: 0;
+        transform: translateX(22px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+@keyframes vsShow {
+    0% {
+        opacity: 0;
+        transform: scale(0.65);
+    }
+
+    70% {
+        opacity: 1;
+        transform: scale(1.12);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* =========================
+   숨김
+========================= */
+
+.hidden {
+    display: none !important;
+}
+
+
+/* =========================
+   작은 모바일 대응
+========================= */
+
+@media (max-width: 380px) {
+
+    .game-container {
+        padding:
+            24px 14px
+            34px;
+    }
+
+    h1 {
+        font-size: 27px;
+    }
+
+    .game-card {
+        min-height: 400px;
+
+        padding:
+            24px 20px;
+    }
+
+    .card-back,
+    .card-front {
+        min-height: 340px;
+    }
+
+    .question {
+        font-size: 19px;
+    }
+
+    .option p {
+        font-size: 16px;
+    }
+
+    .card-area::before,
+    .card-area::after {
+        height: 400px;
+    }
+}
+
+
+/* =========================
+   접근성:
+   애니메이션 감소 설정 사용자
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+
+        transition-duration: 0.01ms !important;
+    }
+}

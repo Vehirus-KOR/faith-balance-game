@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>신앙 밸런스 게임!</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="game-container">
+
+        <header>
+            <p class="sub-title">
+                RE:UNION SPECIAL PROGRAM
+            </p>
+
+            <h1>
+                신앙 밸런스 게임!
+            </h1>
+        </header>
+
+
+        <!-- =========================
+             카테고리 선택
+        ========================== -->
+
+        <section class="filter-area">
+
+            <button
+                class="filter-btn active"
+                data-category="전체"
+            >
+                전체
+            </button>
+
+            <button
+                class="filter-btn"
+                data-category="일반"
+            >
+                일반
+            </button>
+
+            <button
+                class="filter-btn"
+                data-category="신앙"
+            >
+                신앙
+            </button>
+
+        </section>
+
+
+        <!-- =========================
+             카드 영역
+        ========================== -->
+
+        <section class="card-area">
+
+            <button
+                id="cardButton"
+                class="game-card"
+                type="button"
+            >
+
+                <!-- 카드 뒷면 -->
+
+                <div
+                    id="cardBack"
+                    class="card-back"
+                >
+
+                    <p>
+                        RE:UNION
+                    </p>
+
+                    <h2>
+                        BALANCE GAME
+                    </h2>
+
+                    <span>
+                        카드를 터치하세요
+                    </span>
+
+                </div>
+
+
+                <!-- 카드 앞면 -->
+
+                <div
+                    id="cardFront"
+                    class="card-front hidden"
+                >
+
+                    <div class="card-info">
+
+                        <span id="category">
+                        </span>
+
+                        <span id="difficulty">
+                        </span>
+
+                    </div>
+
+
+                    <p
+                        id="question"
+                        class="question"
+                    >
+                    </p>
+
+
+                    <!-- 첫 번째 선택지 -->
+
+                    <div class="option">
+
+                        <p id="optionA">
+                        </p>
+
+                    </div>
+
+
+                    <strong class="vs">
+                        VS
+                    </strong>
+
+
+                    <!-- 두 번째 선택지 -->
+
+                    <div class="option">
+
+                        <p id="optionB">
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </button>
+
+        </section>
+
+
+        <!-- =========================
+             다음 카드
+        ========================== -->
+
+        <button
+            id="nextButton"
+            class="next-btn hidden"
+            type="button"
+        >
+            다음 카드
+        </button>
+
+    </main>
+
+
+    <!-- =========================
+         효과음
+    ========================== -->
+
+    <audio
+        id="shuffleSound"
+        src="assets/sounds/shuffle.mp3"
+        preload="auto"
+    ></audio>
+
+    <audio
+        id="flipSound"
+        src="assets/sounds/flip.mp3"
+        preload="auto"
+    ></audio>
+
+    <audio
+        id="revealSound"
+        src="assets/sounds/reveal.mp3"
+        preload="auto"
+    ></audio>
+
+
+    <!-- =========================
+         JavaScript
+         순서 중요:
+         cards.js → script.js
+    ========================== -->
+
+    <script src="cards.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>
