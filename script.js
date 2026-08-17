@@ -24,6 +24,9 @@ const cardBack =
 const cardFront =
     document.getElementById("cardFront");
 
+const deckLabel =
+    document.getElementById("deckLabel");
+
 const nextButton =
     document.getElementById("nextButton");
 
@@ -495,6 +498,11 @@ filterButtons.forEach(
                 selectedCategory =
                     button.dataset.category;
 
+                // 카드 뒷면에
+                // 현재 선택된 카드덱 표시
+                deckLabel.textContent =
+                `${selectedCategory} 카드덱`;
+                
 
                 // 카테고리가 바뀌었으므로
                 // 이전 카드 기록 초기화
