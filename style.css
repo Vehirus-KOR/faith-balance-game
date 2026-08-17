@@ -316,7 +316,8 @@ h1 {
 }
 
 .question {
-    margin: 0 0 30px;
+    margin: 0 0 26px;
+    padding-bottom: 24px;
 
     font-size: 21px;
     font-weight: 800;
@@ -324,6 +325,8 @@ h1 {
     line-height: 1.5;
 
     word-break: keep-all;
+
+    border-bottom: 1px solid #e5e1f0;
 
     animation:
         questionShow 0.5s ease;
@@ -337,15 +340,12 @@ h1 {
 .option {
     width: 100%;
 
-    padding: 21px 18px;
+    padding: 20px 18px;
 
-    border-radius: 18px;
-
-    background: #f6f3ff;
+    background: transparent;
 
     transition:
-        transform 0.2s ease,
-        background 0.2s ease;
+        transform 0.2s ease;
 }
 
 .option p {
@@ -379,19 +379,32 @@ h1 {
 /* VS */
 
 .vs {
-    display: block;
+    display: flex;
+    align-items: center;
 
-    margin: 17px 0;
+    gap: 14px;
 
-    color: #777;
+    margin: 10px 0;
 
-    font-size: 18px;
-    font-weight: 900;
+    color: #888;
+
+    font-size: 16px;
+    font-weight: 700;
 
     animation:
         vsShow 0.65s ease;
 }
 
+.vs::before,
+.vs::after {
+    content: "";
+
+    flex: 1;
+
+    height: 1px;
+
+    background: #e5e1f0;
+}
 
 /* =========================
    다음 카드 버튼
