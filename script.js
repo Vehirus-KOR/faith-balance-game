@@ -15,6 +15,9 @@ let lastCardId = null;
 // HTML 요소 가져오기
 // ==============================
 
+const cardArea =
+    document.querySelector(".card-area");
+
 const cardButton =
     document.getElementById("cardButton");
 
@@ -57,9 +60,6 @@ const filterButtons =
 
 const shuffleSound =
     document.getElementById("shuffleSound");
-
-const flipSound =
-    document.getElementById("flipSound");
 
 const revealSound =
     document.getElementById("revealSound");
@@ -290,13 +290,10 @@ function resetCard() {
 
     // 혹시 남아 있는
     // 애니메이션 클래스 제거
-    cardButton.classList.remove(
-        "shuffle"
-    );
 
-    cardButton.classList.remove(
-        "flip"
-    );
+cardButton.classList.remove(
+    "card-stream"
+);
 
 }
 
@@ -338,50 +335,26 @@ cardButton.addEventListener(
         cardBack.style.animation =
             "none";
 
-
-        // ==========================
-        // 1. 셔플 효과 시작
+                    // ==========================
+        // 1. 카드 스트림 시작
         // ==========================
 
         playSound(
             shuffleSound
         );
 
+
+        // 메인 카드가
+        // 천천히 공중으로 부상
         cardButton.classList.add(
-            "shuffle"
+            "card-stream"
         );
 
 
         // ==========================
-        // 2. 0.9초 후
-        // 셔플 종료 + 플립 시작
-        // ==========================
-
-        setTimeout(
-            () => {
-
-                cardButton.classList.remove(
-                    "shuffle"
-                );
-
-
-                playSound(
-                    flipSound
-                );
-
-
-                cardButton.classList.add(
-                    "flip"
-                );
-
-            },
-            900
-        );
-
-
-        // ==========================
-        // 3. 카드가 옆면일 때
-        // 실제 질문 공개
+        // 0.80초
+        // 빠른 낙하 후 충돌
+        // 동시에 질문 공개
         // ==========================
 
         setTimeout(
@@ -395,28 +368,28 @@ cardButton.addEventListener(
                 );
 
             },
-            1200
+            800
         );
 
 
         // ==========================
-        // 4. 플립 종료
+        // 1.20초
+        // 전체 애니메이션 종료
         // ==========================
 
         setTimeout(
             () => {
 
                 cardButton.classList.remove(
-                    "flip"
+                    "card-stream"
                 );
 
 
                 isAnimating = false;
 
             },
-            1500
+            1200
         );
-
     }
 );
 
