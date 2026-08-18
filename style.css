@@ -118,7 +118,7 @@ body.theme-faith {
 
     letter-spacing: 1.4px;
 
-    color: #8c7bc4;
+    color: #33332d;
 }
 
 
@@ -673,7 +673,12 @@ body.theme-faith {
     border: none;
     border-radius: 16px;
 
-    background: #8c79c7;
+    background:
+        linear-gradient(
+            135deg,
+            var(--deck-accent) 0%,
+            var(--deck-accent-soft) 100%
+        );
 
     color: white;
 
@@ -684,12 +689,27 @@ body.theme-faith {
 
     box-shadow:
         0 6px 16px
-        rgba(140, 121, 199, 0.25);
+        var(--deck-shadow);
 
     transition:
         transform 0.2s ease,
+        background 0.35s ease,
         box-shadow 0.2s ease,
         opacity 0.2s ease;
+
+    animation:
+    nextButtonShow 0.35s ease-out;    
+}
+
+@keyframes nextButtonShow {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 .next-btn:hover {
@@ -697,7 +717,7 @@ body.theme-faith {
 
     box-shadow:
         0 8px 20px
-        rgba(140, 121, 199, 0.3);
+        var(--deck-shadow);
 }
 
 .next-btn:active {
