@@ -468,13 +468,46 @@ filterButtons.forEach(
 
 
                 // 선택한 카테고리 저장
-                selectedCategory =
-                    button.dataset.category;
+selectedCategory =
+    button.dataset.category;
 
-                // 카드 뒷면에
-                // 현재 선택된 카드덱 표시
-                deckLabel.textContent =
-                `${selectedCategory} 카드덱`;
+
+// ==========================
+// 카드덱 테마 변경
+// ==========================
+
+document.body.classList.remove(
+    "theme-normal",
+    "theme-faith"
+);
+
+
+if (
+    selectedCategory === "일반"
+) {
+
+    document.body.classList.add(
+        "theme-normal"
+    );
+
+}
+
+
+if (
+    selectedCategory === "신앙"
+) {
+
+    document.body.classList.add(
+        "theme-faith"
+    );
+
+}
+
+
+// 카드 뒷면에
+// 현재 선택된 카드덱 표시
+deckLabel.textContent =
+    `${selectedCategory} 카드덱`;
                 
 
                 // 카테고리가 바뀌었으므로

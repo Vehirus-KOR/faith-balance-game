@@ -25,6 +25,49 @@ body {
     color: #222;
 }
 
+/* =========================
+   카드덱 테마 컬러
+========================= */
+
+:root {
+    /* 전체 카드덱 */
+    --deck-primary: #cfc4ee;
+    --deck-secondary: #bce9df;
+
+    --deck-accent: #8c79c7;
+    --deck-accent-soft: #38bda7;
+
+    --deck-shadow:
+        rgba(108, 102, 170, 0.28);
+}
+
+
+/* 일반 카드덱 */
+
+body.theme-normal {
+    --deck-primary: #f2d89b;
+    --deck-secondary: #f2b8a0;
+
+    --deck-accent: #d59b55;
+    --deck-accent-soft: #e88972;
+
+    --deck-shadow:
+        rgba(213, 155, 85, 0.28);
+}
+
+
+/* 신앙 카드덱 */
+
+body.theme-faith {
+    --deck-primary: #9CCAF0;
+    --deck-secondary: #6FA8DC;
+
+    --deck-accent: #3978B8;
+    --deck-accent-soft: #5B9BD5;
+
+    --deck-shadow:
+        rgba(57, 120, 184, 0.28);
+}
 
 /* =========================
    전체 화면
@@ -79,63 +122,129 @@ body {
 }
 
 
-/* =========================
-   카테고리 필터
-========================= */
-
 .filter-area {
     display: flex;
 
-    gap: 8px;
+    gap: 9px;
 
-    margin-bottom: 16px;
+    margin-bottom: 18px;
 }
 
 .filter-btn {
+    position: relative;
+
     flex: 1;
 
-    padding: 12px 8px;
+    padding: 13px 8px;
 
-    border: none;
-    border-radius: 100px;
+    border:
+        1px solid
+        rgba(126, 103, 190, 0.18);
 
-    background: white;
+    border-radius: 14px;
 
-    color: #555;
+    background:
+        linear-gradient(
+            145deg,
+            #fffefa 0%,
+            #f8f5ee 100%
+        );
 
-    font-size: 15px;
-    font-weight: 700;
+    color: #6d6575;
+
+    font-size: 14px;
+    font-weight: 800;
+
+    letter-spacing: -0.2px;
 
     cursor: pointer;
 
     box-shadow:
-        0 4px 12px
-        rgba(0, 0, 0, 0.06);
+        0 5px 12px
+        rgba(72, 60, 100, 0.08),
+        inset 0 0 0 1px
+        rgba(255, 255, 255, 0.85);
 
     transition:
         transform 0.2s ease,
-        background 0.2s ease,
         color 0.2s ease,
+        background 0.2s ease,
+        border-color 0.2s ease,
         box-shadow 0.2s ease;
 }
 
+
+/* 상단 카드 장식선 */
+
+.filter-btn::before {
+    content: "";
+
+    position: absolute;
+
+    top: 5px;
+    left: 50%;
+
+    width: 20px;
+    height: 2px;
+
+    border-radius: 100px;
+
+    background:
+        rgba(140, 121, 199, 0.28);
+
+    transform:
+        translateX(-50%);
+
+    transition:
+        width 0.25s ease,
+        background 0.25s ease;
+}
+
+
 .filter-btn:hover {
-    transform: translateY(-1px);
-}
-
-.filter-btn:active {
-    transform: scale(0.97);
-}
-
-.filter-btn.active {
-    background: #38bda7;
-    color: white;
+    transform:
+        translateY(-2px);
 
     box-shadow:
-        0 6px 16px
-        rgba(56, 189, 167, 0.25);
+        0 8px 18px
+        rgba(72, 60, 100, 0.12);
 }
 
+
+.filter-btn:active {
+    transform:
+        translateY(0)
+        scale(0.97);
+}
+
+
+/* 선택된 카테고리 */
+
+.filter-btn.active {
+    color: white;
+
+    border-color:
+        rgba(126, 103, 190, 0.35);
+
+    background:
+    linear-gradient(
+        135deg,
+        var(--deck-accent) 0%,
+        var(--deck-accent-soft) 100%
+    );
+
+    box-shadow:
+    0 8px 20px
+    var(--deck-shadow);
+}
+
+
+.filter-btn.active::before {
+    width: 34px;
+
+    background:
+        rgba(255, 255, 255, 0.65);
+}
 
 /* =========================
    카드 영역
@@ -168,7 +277,10 @@ body {
 
     border-radius: 26px;
 
-    background: #cfc4ee;
+    background: var(--deck-primary);
+
+    transition:
+    background 0.35s ease;
 
     transform: rotate(-3deg);
 
@@ -188,7 +300,10 @@ body {
 
     border-radius: 26px;
 
-    background: #bce9df;
+    background: var(--deck-secondary);
+
+    transition:
+    background 0.35s ease;
 
     transform: rotate(3deg);
 
@@ -244,14 +359,24 @@ body {
     inset: 13px;
 
     border:
-        1.5px solid
-        rgba(126, 103, 190, 0.72);
+    1.5px solid
+    var(--deck-accent);
+
+    transition:
+    border-color 0.35s ease,
+    color 0.35s ease,
+    box-shadow 0.35s ease;
 
     border-radius: 18px;
 
     box-shadow:
-        inset 0 0 0 4px #fffdf8,
-        inset 0 0 0 5px rgba(126, 103, 190, 0.2);
+    inset 0 0 0 4px #fffdf8,
+    inset 0 0 0 5px
+    color-mix(
+        in srgb,
+        var(--deck-accent) 20%,
+        transparent
+    );
 
     pointer-events: none;
 
@@ -274,7 +399,12 @@ body {
 
     transform: translateX(-50%);
 
-    color: #8c79c7;
+    color: var(--deck-accent);
+
+    transition:
+    border-color 0.35s ease,
+    color 0.35s ease,
+    box-shadow 0.35s ease;
 
     font-size: 13px;
 
@@ -318,9 +448,9 @@ body {
 .card-back p {
     margin: 0;
 
-    color: #8b79c6;
+    color: var(--deck-accent);
 
-    font-size: 13px;
+    font-size: 17px;
     font-weight: 700;
 
     letter-spacing: 3px;
@@ -334,9 +464,12 @@ body {
 }
 
 .card-back span {
-    color: #888;
+    color: var(--deck-accent);
 
     font-size: 14px;
+
+    transition:
+        color 0.35s ease;
 }
 
 
@@ -382,7 +515,7 @@ body {
     font-size: 14px;
     font-weight: 800;
 
-    color: #755fc0;
+    color: var(--deck-accent);
 
     letter-spacing: 0.2px;
 }
@@ -431,19 +564,19 @@ body {
     align-items: center;
     justify-content: center;
 
-    color: #9b89cf;
+    color: var(--deck-accent);
 
     font-size: 7px;
 
     background:
         linear-gradient(
             to right,
-            #cfc7e2 0%,
-            #cfc7e2 46%,
+            var(--deck-primary) 0%,
+            var(--deck-primary) 46%,
             transparent 46%,
             transparent 54%,
-            #cfc7e2 54%,
-            #cfc7e2 100%
+            var(--deck-primary) 54%,
+            var(--deck-primary) 100%
         );
 
     background-position: center;
@@ -495,7 +628,7 @@ body {
 
     margin: 10px 0;
 
-    color: #7f69bd;
+    color: var(--deck-accent);
 
     font-size: 15px;
     font-weight: 800;
@@ -514,7 +647,7 @@ body {
         linear-gradient(
             to right,
             transparent,
-            #b9afd4
+            var(--deck-primary)
         );
 }
 
