@@ -112,10 +112,19 @@ const bgm =
     document.getElementById("bgm");
 
 const shuffleSound =
-    document.getElementById("shuffleSound");
+    document.getElementById(
+        "shuffleSound"
+    );
 
 const revealSound =
-    document.getElementById("revealSound");
+    document.getElementById(
+        "revealSound"
+    );
+
+const checkSound =
+    document.getElementById(
+        "checkSound"
+    );
 
 
 function playSound(sound) {
@@ -396,6 +405,13 @@ settingsButton.addEventListener(
 
         event.stopPropagation();
 
+
+        // 설정 버튼 효과음
+        playSound(
+            checkSound
+        );
+
+
         openSettings();
 
     }
@@ -404,9 +420,17 @@ settingsButton.addEventListener(
 
 settingsCloseButton.addEventListener(
     "click",
-    closeSettings
-);
+    () => {
 
+        // 닫기 버튼 효과음
+        playSound(
+            checkSound
+        );
+
+        closeSettings();
+
+    }
+);
 
 // 모달 바깥 영역 터치 시 닫기
 
@@ -433,6 +457,12 @@ settingsModal.addEventListener(
 bgmToggle.addEventListener(
     "click",
     () => {
+
+        // ON / OFF 버튼 효과음
+        playSound(
+            checkSound
+        );
+
 
         bgmEnabled =
             !bgmEnabled;
@@ -482,8 +512,20 @@ sfxToggle.addEventListener(
     "click",
     () => {
 
+        // 먼저 상태 변경
         sfxEnabled =
             !sfxEnabled;
+
+
+        // OFF → ON일 때만
+        // 확인 효과음 재생
+        if (sfxEnabled) {
+
+            playSound(
+                checkSound
+            );
+
+        }
 
 
         updateSettingsUI();
@@ -534,6 +576,21 @@ sfxVolume.addEventListener(
 
 
         saveSettings();
+
+    }
+);
+
+// ==============================
+// 효과음 볼륨 확인음
+// ==============================
+
+sfxVolume.addEventListener(
+    "change",
+    () => {
+
+        playSound(
+            checkSound
+        );
 
     }
 );
@@ -861,6 +918,12 @@ nextButton.addEventListener(
         }
 
 
+        // 버튼 확인 효과음
+        playSound(
+            checkSound
+        );
+
+
         resetCard();
 
 
@@ -887,22 +950,28 @@ nextButton.addEventListener(
 filterButtons.forEach(
     button => {
 
-        button.addEventListener(
-            "click",
-            () => {
+button.addEventListener(
+    "click",
+    () => {
 
-                // 카드 애니메이션 중에는
-                // 카테고리 변경 방지
-                if (isAnimating) {
+        // 카드 애니메이션 중에는
+        // 카테고리 변경 방지
+        if (isAnimating) {
 
-                    return;
+            return;
 
-                }
+        }
 
 
-                // 모든 버튼의
-                // active 제거
-                filterButtons.forEach(
+        // 카테고리 버튼 효과음
+        playSound(
+            checkSound
+        );
+
+
+        // 모든 버튼의
+        // active 제거
+        filterButtons.forEach(
                     btn => {
 
                         btn.classList.remove(
