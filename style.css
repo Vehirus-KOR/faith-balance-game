@@ -23,13 +23,26 @@ body {
         sans-serif;
 
     background:
+        radial-gradient(
+            circle at 12% 18%,
+            var(--bg-glow-1) 0%,
+            transparent 48%
+        ),
+        radial-gradient(
+            circle at 88% 72%,
+            var(--bg-glow-2) 0%,
+            transparent 50%
+        ),
         linear-gradient(
             180deg,
-            #f6f1ff 0%,
-            #eefcf9 100%
+            #f7f3ff 0%,
+            #eefaf8 100%
         );
 
     color: #222;
+
+    transition:
+        background 0.45s ease;
 }
 
 /* =========================
@@ -37,7 +50,6 @@ body {
 ========================= */
 
 :root {
-    /* 전체 카드덱 */
     --deck-primary: #cfc4ee;
     --deck-secondary: #bce9df;
 
@@ -46,6 +58,12 @@ body {
 
     --deck-shadow:
         rgba(108, 102, 170, 0.28);
+
+    --bg-glow-1:
+        rgba(168, 145, 230, 0.42);
+
+    --bg-glow-2:
+        rgba(123, 219, 198, 0.38);
 }
 
 
@@ -60,6 +78,12 @@ body.theme-normal {
 
     --deck-shadow:
         rgba(213, 155, 85, 0.28);
+
+    --bg-glow-1:
+        rgba(229, 174, 91, 0.38);
+
+    --bg-glow-2:
+        rgba(232, 137, 114, 0.34);
 }
 
 
@@ -74,6 +98,12 @@ body.theme-faith {
 
     --deck-shadow:
         rgba(57, 120, 184, 0.28);
+
+    --bg-glow-1:
+        rgba(91, 155, 213, 0.38);
+
+    --bg-glow-2:
+        rgba(111, 168, 220, 0.34);
 }
 
 /* =========================
