@@ -61,6 +61,9 @@ const filterButtons =
 // 효과음 요소 가져오기
 // ==============================
 
+const bgm =
+    document.getElementById("bgm");
+
 const shuffleSound =
     document.getElementById("shuffleSound");
 
@@ -93,6 +96,48 @@ function playSound(sound) {
 
 }
 
+// ==============================
+// 배경음악
+// ==============================
+
+let bgmStarted = false;
+
+
+function startBgm() {
+
+    if (
+        bgmStarted ||
+        !bgm
+    ) {
+        return;
+    }
+
+
+    bgm.volume = 0.35;
+
+
+    bgm.play()
+        .then(() => {
+
+            bgmStarted = true;
+
+        })
+        .catch(error => {
+
+            console.log(
+                "배경음악 재생 실패:",
+                error
+            );
+
+        });
+
+}
+
+// 최초 사용자 조작 시 BGM 시작
+document.addEventListener(
+    "pointerdown",
+    startBgm
+);
 
 // ==============================
 // 난이도 별 표시
