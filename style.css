@@ -803,7 +803,7 @@ body.theme-faith {
         linear-gradient(
             to left,
             transparent,
-            #b9afd4
+            var(--deck-primary)
         );
 }
 
