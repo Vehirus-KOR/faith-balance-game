@@ -29,7 +29,11 @@
          게임 화면
     ========================== -->
 
-    <main class="game-container">
+    <main
+    id="gameContainer"
+    class="game-container"
+    inert
+>
 
 
         <!-- =========================
@@ -319,6 +323,110 @@
 
     </main>
 
+    </main>
+
+
+    <!-- =========================
+         게임 시작 모달
+    ========================== -->
+
+    <div
+        id="startModal"
+        class="modal-overlay start-modal-overlay"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="startTitle"
+    >
+
+        <div class="start-panel">
+
+
+            <!-- 게임 브랜드 -->
+
+            <div class="start-brand">
+
+                <span class="start-brand-subtitle">
+                    BALANCE CARD GAME
+                </span>
+
+                <h2 id="startTitle">
+                    PICK:ONE
+                </h2>
+
+            </div>
+
+
+            <!-- 웰컴 메시지 -->
+
+            <p class="start-welcome">
+                PICK:ONE에 오신 것을 환영합니다!
+                <br>
+                카드를 뽑고, 서로의 이야기를 나눠보세요.
+            </p>
+
+
+            <!-- 게임 방법 -->
+
+            <div class="start-guide">
+
+                <h3>
+                    게임 방법
+                </h3>
+
+                <ol>
+                    <li>
+                        원하는 카테고리 카드 덱을 선택하세요.
+                    </li>
+
+                    <li>
+                        카드 덱을 터치해 질문을 뽑으세요.
+                    </li>
+
+                    <li>
+                        두 가지 선택지 중 하나를 선택하세요.
+                    </li>
+
+                    <li>
+                        선택한 이유를 서로 이야기해보세요.
+                    </li>
+
+                    <li>
+                        다음 카드를 눌러 계속 진행하세요.
+                    </li>
+                </ol>
+
+            </div>
+
+
+            <!-- 제작자 -->
+
+            <p class="start-creator">
+                CREATED BY
+                <strong>
+                    Vehirus-KOR
+                </strong>
+            </p>
+
+
+            <!-- 시작 버튼 -->
+
+            <button
+                id="startConfirmButton"
+                class="start-confirm-btn"
+                type="button"
+            >
+                확인
+            </button>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         설정 모달
+    ========================== -->
 
     <!-- =========================
          설정 모달

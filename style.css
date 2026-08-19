@@ -461,6 +461,9 @@ body.theme-faith {
     transition:
         transform 0.25s ease,
         box-shadow 0.25s ease;
+
+    animation:
+        cardIdle 3s ease-in-out infinite;    
 }
 .game-card::before {
     content: "";
@@ -551,9 +554,6 @@ body.theme-faith {
 
     justify-content: center;
     align-items: center;
-
-    animation:
-        cardIdle 3s ease-in-out infinite;
 }
 
 .card-back p {
@@ -561,7 +561,7 @@ body.theme-faith {
 
     color: var(--deck-accent);
 
-    font-size: 17px;
+    font-size: 20px;
     font-weight: 700;
 
     letter-spacing: 3px;
@@ -570,8 +570,8 @@ body.theme-faith {
 .card-back h2 {
     margin: 10px 0 22px;
 
-    font-size: 28px;
-    line-height: 1.2;
+    font-size: 40px;
+    font-weight: 800;
 }
 
 .card-back span {
@@ -1034,6 +1034,243 @@ body.theme-faith {
         transform:
             scale(1);
     }
+}
+
+/* =========================
+   게임 시작 모달
+========================= */
+
+.start-modal-overlay {
+    z-index: 3000;
+}
+
+
+.start-panel {
+    width: 100%;
+    max-width: 400px;
+
+    padding:
+        30px 26px
+        24px;
+
+    border:
+        1px solid
+        rgba(126, 103, 190, 0.18);
+
+    border-radius: 26px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #fffefa 0%,
+            #f8f5ee 100%
+        );
+
+    box-shadow:
+        0 24px 60px
+        rgba(72, 60, 100, 0.24);
+
+    text-align: center;
+
+    animation:
+        settingsPanelShow
+        0.32s
+        cubic-bezier(
+            0.2,
+            0.9,
+            0.3,
+            1.1
+        );
+}
+
+
+/* =========================
+   시작 화면 브랜드
+========================= */
+
+.start-brand {
+    margin-bottom: 20px;
+}
+
+
+.start-brand-subtitle {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color:
+        var(--deck-accent);
+
+    font-size: 9px;
+    font-weight: 800;
+
+    letter-spacing: 2px;
+}
+
+
+.start-brand h2 {
+    margin: 0;
+
+    color: #26232c;
+
+    font-size: 34px;
+    font-weight: 900;
+
+    letter-spacing: -1px;
+}
+
+
+/* =========================
+   웰컴 메시지
+========================= */
+
+.start-welcome {
+    margin:
+        0 0 24px;
+
+    color: #69626f;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    line-height: 1.7;
+
+    word-break: keep-all;
+}
+
+
+/* =========================
+   게임 방법
+========================= */
+
+.start-guide {
+    padding:
+        19px 20px;
+
+    border:
+        1px solid
+        rgba(126, 103, 190, 0.12);
+
+    border-radius: 18px;
+
+    background:
+        rgba(255, 255, 255, 0.55);
+
+    text-align: left;
+}
+
+
+.start-guide h3 {
+    margin:
+        0 0 14px;
+
+    color: #302c36;
+
+    font-size: 16px;
+    font-weight: 800;
+}
+
+
+.start-guide ol {
+    margin: 0;
+
+    padding-left: 20px;
+
+    color: #625b68;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    line-height: 1.8;
+}
+
+
+.start-guide li + li {
+    margin-top: 3px;
+}
+
+
+/* =========================
+   제작자
+========================= */
+
+.start-creator {
+    margin:
+        20px 0 0;
+
+    color: #666;
+
+    font-size: 9px;
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    transform: scale(0.75);
+    transform-origin: center;
+}
+
+
+.start-creator strong {
+    margin-left: 5px;
+
+    color: inherit;
+
+    font-weight: 700;
+}
+
+
+/* =========================
+   게임 시작 확인 버튼
+========================= */
+
+.start-confirm-btn {
+    width: 100%;
+
+    margin-top: 18px;
+    padding: 15px;
+
+    border: none;
+    border-radius: 15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--deck-accent) 0%,
+            var(--deck-accent-soft) 100%
+        );
+
+    color: #ffffff;
+
+    font-family: inherit;
+
+    font-size: 15px;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 6px 16px
+        var(--deck-shadow);
+
+    transition:
+        transform 0.18s ease,
+        box-shadow 0.18s ease;
+}
+
+
+.start-confirm-btn:hover {
+    transform:
+        translateY(-1px);
+
+    box-shadow:
+        0 8px 20px
+        var(--deck-shadow);
+}
+
+
+.start-confirm-btn:active {
+    transform:
+        scale(0.97);
 }
 
 /* =========================

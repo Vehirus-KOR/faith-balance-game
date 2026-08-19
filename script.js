@@ -115,6 +115,25 @@ const backToast =
     );
 
 // ==============================
+// 게임 시작 화면 요소
+// ==============================
+
+const gameContainer =
+    document.getElementById(
+        "gameContainer"
+    );
+
+const startModal =
+    document.getElementById(
+        "startModal"
+    );
+
+const startConfirmButton =
+    document.getElementById(
+        "startConfirmButton"
+    );
+
+// ==============================
 // 효과음 요소 가져오기
 // ==============================
 
@@ -205,12 +224,6 @@ function startBgm() {
         });
 
 }
-
-// 최초 사용자 조작 시 BGM 시작
-document.addEventListener(
-    "pointerdown",
-    startBgm
-);
 
 // ==============================
 // 설정 저장
@@ -386,6 +399,42 @@ function loadSettings() {
 
 
 loadSettings();
+
+// ==============================
+// 게임 시작 화면
+// ==============================
+
+function startGame() {
+
+    // 확인 효과음
+    playSound(
+        checkSound
+    );
+
+
+    // 사용자 입력을 통해
+    // 배경음악 재생 시작
+    startBgm();
+
+
+    // 시작 화면 닫기
+    startModal.classList.add(
+        "hidden"
+    );
+
+
+    // 게임 화면 조작 활성화
+    gameContainer.removeAttribute(
+        "inert"
+    );
+
+}
+
+
+startConfirmButton.addEventListener(
+    "click",
+    startGame
+);
 
 // ==============================
 // 설정 모달 열기 / 닫기
@@ -876,12 +925,7 @@ cardButton.addEventListener(
 
         isAnimating = true;
 
-
-        // 카드 대기 애니메이션 잠시 정지
-        cardBack.style.animation =
-            "none";
-
-                    // ==========================
+        // ==========================
         // 1. 카드 스트림 시작
         // ==========================
 
@@ -962,19 +1006,6 @@ nextButton.addEventListener(
 
 
         resetCard();
-
-
-        // 카드 뒷면의
-        // 대기 애니메이션 재시작
-        setTimeout(
-            () => {
-
-                cardBack.style.animation =
-                    "";
-
-            },
-            20
-        );
 
     }
 );
@@ -1076,19 +1107,6 @@ deckLabel.textContent =
 
                 // 카드 초기화
                 resetCard();
-
-
-                // 대기 애니메이션 재시작
-                setTimeout(
-                    () => {
-
-                        cardBack.style.animation =
-                            "";
-
-                    },
-                    20
-                );
-
             }
         );
 
