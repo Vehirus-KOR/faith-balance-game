@@ -1131,10 +1131,47 @@ body.theme-faith {
 
     color: #26232c;
 
-    font-size: 24px;
-    font-weight: 900;
+    font-size: 25px;
+    font-weight: 700;
 }
 
+.settings-brand {
+    display: flex;
+    align-items: baseline;
+
+    gap: 8px;
+
+    margin-bottom: 10px;
+}
+
+
+.settings-brand-title {
+    color: #222;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    line-height: 1;
+
+    letter-spacing: -0.4px;
+}
+
+
+.settings-brand-subtitle {
+    display: inline-block;
+
+    color: #33332d;
+
+    font-size: 9px;
+    font-weight: 700;
+
+    letter-spacing: 1.4px;
+
+    line-height: 1;
+
+    transform: scale(0.75);
+    transform-origin: left center;
+}
 
 .modal-close-btn {
     width: 34px;
@@ -1201,6 +1238,174 @@ body.theme-faith {
         rgba(126, 103, 190, 0.12);
 }
 
+/* =========================
+   언어 설정
+========================= */
+
+.language-setting {
+    padding-bottom: 4px;
+}
+
+
+.language-setting-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+}
+
+
+/* 언어 + 개발중 */
+
+.language-title {
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+
+    flex-shrink: 0;
+}
+
+
+.language-title strong {
+    color: #302c36;
+
+    font-size: 15px;
+    font-weight: 800;
+}
+
+
+/* 개발중 표시 */
+
+.development-badge {
+    padding:
+        3px 6px;
+
+    border:
+        1px solid
+        color-mix(
+            in srgb,
+            var(--deck-accent) 18%,
+            transparent
+        );
+
+    border-radius: 100px;
+
+    background:
+        color-mix(
+            in srgb,
+            var(--deck-accent) 8%,
+            white
+        );
+
+    color:
+        var(--deck-accent);
+
+    font-size: 9px;
+    font-weight: 800;
+
+    letter-spacing:
+        -0.2px;
+}
+
+
+/* =========================
+   언어 드롭다운
+========================= */
+
+.language-select-wrapper {
+    position: relative;
+
+    width: 150px;
+}
+
+
+.language-select {
+    width: 100%;
+    height: 44px;
+
+    padding:
+        0 42px
+        0 15px;
+
+    appearance: none;
+    -webkit-appearance: none;
+
+    border:
+        1px solid
+        rgba(126, 103, 190, 0.16);
+
+    border-radius: 13px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff 0%,
+            #faf8f4 100%
+        );
+
+    color: #403a45;
+
+    font-family: inherit;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    outline: none;
+
+    box-shadow:
+        0 4px 11px
+        rgba(72, 60, 100, 0.06),
+        inset 0 0 0 1px
+        rgba(255, 255, 255, 0.8);
+}
+
+
+/*
+   disabled 상태지만
+   개발중 UI를 자연스럽게 유지
+*/
+
+.language-select:disabled {
+    opacity: 1;
+
+    color: #403a45;
+
+    -webkit-text-fill-color:
+        #403a45;
+
+    cursor: default;
+}
+
+
+/* 직접 만든 아래 화살표 */
+
+.language-select-icon {
+    position: absolute;
+
+    top: 50%;
+    right: 14px;
+
+    width: 17px;
+    height: 17px;
+
+    fill: none;
+
+    stroke:
+        var(--deck-accent);
+
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+
+    transform:
+        translateY(-50%);
+
+    pointer-events: none;
+
+    opacity: 0.72;
+}
 
 .setting-row {
     display: flex;

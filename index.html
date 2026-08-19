@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
+
     <meta charset="UTF-8">
 
     <meta
@@ -8,125 +10,163 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>PICK:ONE</title>
+    <title>
+        PICK:ONE
+    </title>
 
-    <link rel="stylesheet" href="style.css">
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
 </head>
+
 
 <body>
 
+
+    <!-- =========================
+         게임 화면
+    ========================== -->
+
     <main class="game-container">
 
-<header class="game-header">
 
-    <div class="header-title">
-        <h1>
-            PICK:ONE
-        </h1>
+        <!-- =========================
+             헤더
+        ========================== -->
 
-        <p class="sub-title">
-            BALANCE CARD GAME
-        </p>
-    </div>
+        <header class="game-header">
 
+            <div class="header-title">
 
-    <nav
-        class="header-menu"
-        aria-label="게임 메뉴"
-    >
+                <h1>
+                    PICK:ONE
+                </h1>
 
-<!-- 도감 -->
-<button
-    id="collectionButton"
-    class="header-menu-btn"
-    type="button"
-    aria-label="도감"
-    title="도감"
->
-    <svg
-        viewBox="0 0 24 24"
-        aria-hidden="true"
-    >
-        <path
-            d="M4 5.5C6.8 5.5 9.2 6.2 12 8
-               C14.8 6.2 17.2 5.5 20 5.5
-               V18.5
-               C17.2 18.5 14.8 19.2 12 21
-               C9.2 19.2 6.8 18.5 4 18.5
-               Z"
-        />
-        <path d="M12 8V21" />
-    </svg>
-</button>
+                <p class="sub-title">
+                    BALANCE CARD GAME
+                </p>
+
+            </div>
 
 
-<!-- 설정 -->
-<button
-    id="settingsButton"
-    class="header-menu-btn"
-    type="button"
-    aria-label="설정"
-    title="설정"
->
-    <svg
-        viewBox="0 0 24 24"
-        aria-hidden="true"
-    >
-        <circle
-            cx="12"
-            cy="12"
-            r="3"
-        />
+            <nav
+                class="header-menu"
+                aria-label="게임 메뉴"
+            >
 
-        <path
-            d="M19.4 15
-               A1.7 1.7 0 0 0 19.7 16.9
-               L19.8 17
-               A2 2 0 1 1 17 19.8
-               L16.9 19.7
-               A1.7 1.7 0 0 0 15 19.4
-               A1.7 1.7 0 0 0 14 21
-               V21.1
-               A2 2 0 1 1 10 21.1
-               V21
-               A1.7 1.7 0 0 0 9 19.4
-               A1.7 1.7 0 0 0 7.1 19.7
-               L7 19.8
-               A2 2 0 1 1 4.2 17
-               L4.3 16.9
-               A1.7 1.7 0 0 0 4.6 15
-               A1.7 1.7 0 0 0 3 14
-               H2.9
-               A2 2 0 1 1 2.9 10
-               H3
-               A1.7 1.7 0 0 0 4.6 9
-               A1.7 1.7 0 0 0 4.3 7.1
-               L4.2 7
-               A2 2 0 1 1 7 4.2
-               L7.1 4.3
-               A1.7 1.7 0 0 0 9 4.6
-               A1.7 1.7 0 0 0 10 3
-               V2.9
-               A2 2 0 1 1 14 2.9
-               V3
-               A1.7 1.7 0 0 0 15 4.6
-               A1.7 1.7 0 0 0 16.9 4.3
-               L17 4.2
-               A2 2 0 1 1 19.8 7
-               L19.7 7.1
-               A1.7 1.7 0 0 0 19.4 9
-               A1.7 1.7 0 0 0 21 10
-               H21.1
-               A2 2 0 1 1 21.1 14
-               H21
-               A1.7 1.7 0 0 0 19.4 15Z"
-        />
-    </svg>
-</button>
 
-    </nav>
+                <!-- 도감 -->
 
-</header>
+                <button
+                    id="collectionButton"
+                    class="header-menu-btn"
+                    type="button"
+                    aria-label="도감"
+                    title="도감"
+                >
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                    >
+
+                        <path
+                            d="
+                                M4 5.5
+                                C6.8 5.5 9.2 6.2 12 8
+                                C14.8 6.2 17.2 5.5 20 5.5
+                                V18.5
+                                C17.2 18.5 14.8 19.2 12 21
+                                C9.2 19.2 6.8 18.5 4 18.5
+                                Z
+                            "
+                        />
+
+                        <path
+                            d="M12 8V21"
+                        />
+
+                    </svg>
+
+                </button>
+
+
+                <!-- 설정 -->
+
+                <button
+                    id="settingsButton"
+                    class="header-menu-btn"
+                    type="button"
+                    aria-label="설정"
+                    title="설정"
+                >
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                    >
+
+                        <circle
+                            cx="12"
+                            cy="12"
+                            r="3"
+                        />
+
+                        <path
+                            d="
+                                M19.4 15
+                                A1.7 1.7 0 0 0 19.7 16.9
+                                L19.8 17
+                                A2 2 0 1 1 17 19.8
+                                L16.9 19.7
+                                A1.7 1.7 0 0 0 15 19.4
+                                A1.7 1.7 0 0 0 14 21
+                                V21.1
+                                A2 2 0 1 1 10 21.1
+                                V21
+                                A1.7 1.7 0 0 0 9 19.4
+                                A1.7 1.7 0 0 0 7.1 19.7
+                                L7 19.8
+                                A2 2 0 1 1 4.2 17
+                                L4.3 16.9
+                                A1.7 1.7 0 0 0 4.6 15
+                                A1.7 1.7 0 0 0 3 14
+                                H2.9
+                                A2 2 0 1 1 2.9 10
+                                H3
+                                A1.7 1.7 0 0 0 4.6 9
+                                A1.7 1.7 0 0 0 4.3 7.1
+                                L4.2 7
+                                A2 2 0 1 1 7 4.2
+                                L7.1 4.3
+                                A1.7 1.7 0 0 0 9 4.6
+                                A1.7 1.7 0 0 0 10 3
+                                V2.9
+                                A2 2 0 1 1 14 2.9
+                                V3
+                                A1.7 1.7 0 0 0 15 4.6
+                                A1.7 1.7 0 0 0 16.9 4.3
+                                L17 4.2
+                                A2 2 0 1 1 19.8 7
+                                L19.7 7.1
+                                A1.7 1.7 0 0 0 19.4 9
+                                A1.7 1.7 0 0 0 21 10
+                                H21.1
+                                A2 2 0 1 1 21.1 14
+                                H21
+                                A1.7 1.7 0 0 0 19.4 15Z
+                            "
+                        />
+
+                    </svg>
+
+                </button>
+
+            </nav>
+
+        </header>
 
 
         <!-- =========================
@@ -163,37 +203,42 @@
              카드 영역
         ========================== -->
 
-<section class="card-area">
+        <section class="card-area">
 
-    <button
-        id="cardButton"
-        class="game-card"
-        type="button"
-    >
-
-                <!-- 카드 뒷면 -->
-
-<div
-    id="cardBack"
-    class="card-back"
->
-
-    <p id="deckLabel">
-        전체 카드덱
-    </p>
-
-    <h2>
-        PICK:ONE
-    </h2>
-
-    <span>
-        카드를 터치하세요
-    </span>
-
-</div>
+            <button
+                id="cardButton"
+                class="game-card"
+                type="button"
+            >
 
 
-                <!-- 카드 앞면 -->
+                <!-- =========================
+                     카드 뒷면
+                ========================== -->
+
+                <div
+                    id="cardBack"
+                    class="card-back"
+                >
+
+                    <p id="deckLabel">
+                        전체 카드덱
+                    </p>
+
+                    <h2>
+                        PICK:ONE
+                    </h2>
+
+                    <span>
+                        카드를 터치하세요
+                    </span>
+
+                </div>
+
+
+                <!-- =========================
+                     카드 앞면
+                ========================== -->
 
                 <div
                     id="cardFront"
@@ -202,21 +247,30 @@
 
                     <div class="card-info">
 
-    <div class="card-category-group">
-        <span id="category">
-        </span>
+                        <div class="card-category-group">
 
-        <span id="cardNumber">
-        </span>
-    </div>
+                            <span id="category">
+                            </span>
 
-    <span id="difficulty">
-    </span>
+                            <span id="cardNumber">
+                            </span>
 
-</div>
+                        </div>
+
+
+                        <span id="difficulty">
+                        </span>
+
+                    </div>
+
+
+                    <!-- 질문 -->
 
                     <p class="question">
-                    <span id="question"></span>
+
+                        <span id="question">
+                        </span>
+
                     </p>
 
 
@@ -265,6 +319,7 @@
 
     </main>
 
+
     <!-- =========================
          설정 모달
     ========================== -->
@@ -279,16 +334,32 @@
 
         <div class="settings-panel">
 
+
+            <!-- =========================
+                 설정 헤더
+            ========================== -->
+
             <div class="settings-header">
 
                 <div>
-                    <p class="settings-label">
-                        PICK:ONE
-                    </p>
+
+                    <div class="settings-brand">
+
+                        <strong class="settings-brand-title">
+                            PICK:ONE
+                        </strong>
+
+                        <span class="settings-brand-subtitle">
+                            BALANCE CARD GAME
+                        </span>
+
+                    </div>
+
 
                     <h2 id="settingsTitle">
                         설정
                     </h2>
+
                 </div>
 
 
@@ -304,13 +375,16 @@
             </div>
 
 
-            <!-- 배경음악 -->
+            <!-- =========================
+                 배경음악
+            ========================== -->
 
             <div class="setting-item">
 
                 <div class="setting-row">
 
                     <div class="setting-text">
+
                         <strong>
                             배경음악
                         </strong>
@@ -318,6 +392,7 @@
                         <span>
                             게임 배경음악을 조절합니다
                         </span>
+
                     </div>
 
 
@@ -346,13 +421,16 @@
             </div>
 
 
-            <!-- 효과음 -->
+            <!-- =========================
+                 효과음
+            ========================== -->
 
             <div class="setting-item">
 
                 <div class="setting-row">
 
                     <div class="setting-text">
+
                         <strong>
                             효과음
                         </strong>
@@ -360,6 +438,7 @@
                         <span>
                             카드 효과음을 조절합니다
                         </span>
+
                     </div>
 
 
@@ -387,26 +466,96 @@
 
             </div>
 
+
+            <!-- =========================
+                 언어
+            ========================== -->
+
+            <div class="setting-item language-setting">
+
+                <div class="language-setting-row">
+
+
+                    <!-- 언어 제목 -->
+
+                    <div class="language-title">
+
+                        <strong>
+                            언어
+                        </strong>
+
+                        <span class="development-badge">
+                            개발중
+                        </span>
+
+                    </div>
+
+
+                    <!-- 언어 드롭다운 -->
+
+                    <div class="language-select-wrapper">
+
+                        <select
+                            id="languageSelect"
+                            class="language-select"
+                            aria-label="언어 선택"
+                            disabled
+                        >
+
+                            <option value="ko">
+                                한국어
+                            </option>
+
+                        </select>
+
+
+                        <svg
+                            class="language-select-icon"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                        >
+
+                            <path
+                                d="M7 10L12 15L17 10"
+                            />
+
+                        </svg>
+
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
 
     </div>
 
-    <!-- =========================
-         효과음
-    ========================== -->
-<audio
-    id="bgm"
-    src="assets/sounds/bgm.mp3"
-    preload="auto"
-    loop
-></audio>
 
+    <!-- =========================
+         오디오
+    ========================== -->
+
+    <!-- 배경음악 -->
+
+    <audio
+        id="bgm"
+        src="assets/sounds/bgm.mp3"
+        preload="auto"
+        loop
+    ></audio>
+
+
+    <!-- 셔플 효과음 -->
 
     <audio
         id="shuffleSound"
         src="assets/sounds/shuffle.mp3"
         preload="auto"
     ></audio>
+
+
+    <!-- 질문 공개 효과음 -->
 
     <audio
         id="revealSound"
@@ -417,12 +566,16 @@
 
     <!-- =========================
          JavaScript
+
          순서 중요:
          cards.js → script.js
     ========================== -->
 
     <script src="cards.js"></script>
+
     <script src="script.js"></script>
 
+
 </body>
+
 </html>
