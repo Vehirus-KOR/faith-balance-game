@@ -10,6 +10,15 @@ let isAnimating = false;
 // 연속으로 다시 나오지 않도록 저장
 let lastCardId = null;
 
+// ==============================
+// 사운드 설정
+// ==============================
+
+let bgmEnabled = true;
+let sfxEnabled = true;
+
+let bgmVolumeValue = 0.35;
+let sfxVolumeValue = 1;
 
 // ==============================
 // HTML 요소 가져오기
@@ -56,6 +65,44 @@ const optionBText =
 const filterButtons =
     document.querySelectorAll(".filter-btn");
 
+// ==============================
+// 설정 요소 가져오기
+// ==============================
+
+const settingsButton =
+    document.getElementById(
+        "settingsButton"
+    );
+
+const settingsModal =
+    document.getElementById(
+        "settingsModal"
+    );
+
+const settingsCloseButton =
+    document.getElementById(
+        "settingsCloseButton"
+    );
+
+const bgmToggle =
+    document.getElementById(
+        "bgmToggle"
+    );
+
+const sfxToggle =
+    document.getElementById(
+        "sfxToggle"
+    );
+
+const bgmVolume =
+    document.getElementById(
+        "bgmVolume"
+    );
+
+const sfxVolume =
+    document.getElementById(
+        "sfxVolume"
+    );
 
 // ==============================
 // 효과음 요소 가져오기
@@ -71,19 +118,24 @@ const revealSound =
     document.getElementById("revealSound");
 
 
-// ==============================
-// 효과음 재생 함수
-// ==============================
-
 function playSound(sound) {
 
-    if (!sound) {
+    if (
+        !sound ||
+        !sfxEnabled
+    ) {
         return;
     }
+
+
+    sound.volume =
+        sfxVolumeValue;
+
 
     // 같은 소리를 빠르게 다시 실행해도
     // 처음부터 재생되도록 초기화
     sound.currentTime = 0;
+
 
     sound.play().catch(error => {
 
@@ -107,13 +159,15 @@ function startBgm() {
 
     if (
         bgmStarted ||
-        !bgm
+        !bgm ||
+        !bgmEnabled
     ) {
         return;
     }
 
 
-    bgm.volume = 0.35;
+    bgm.volume =
+        bgmVolumeValue;
 
 
     bgm.play()
@@ -137,6 +191,351 @@ function startBgm() {
 document.addEventListener(
     "pointerdown",
     startBgm
+);
+
+// ==============================
+// 설정 저장
+// ==============================
+
+function saveSettings() {
+
+    const settings = {
+
+        bgmEnabled:
+            bgmEnabled,
+
+        sfxEnabled:
+            sfxEnabled,
+
+        bgmVolume:
+            bgmVolumeValue,
+
+        sfxVolume:
+            sfxVolumeValue
+
+    };
+
+
+    localStorage.setItem(
+        "pickOneSettings",
+        JSON.stringify(settings)
+    );
+
+}
+
+
+// ==============================
+// 설정 UI 반영
+// ==============================
+
+function updateSettingsUI() {
+
+    bgmToggle.classList.toggle(
+        "active",
+        bgmEnabled
+    );
+
+    bgmToggle.textContent =
+        bgmEnabled
+            ? "ON"
+            : "OFF";
+
+    bgmToggle.setAttribute(
+        "aria-pressed",
+        String(bgmEnabled)
+    );
+
+
+    sfxToggle.classList.toggle(
+        "active",
+        sfxEnabled
+    );
+
+    sfxToggle.textContent =
+        sfxEnabled
+            ? "ON"
+            : "OFF";
+
+    sfxToggle.setAttribute(
+        "aria-pressed",
+        String(sfxEnabled)
+    );
+
+
+    bgmVolume.value =
+        Math.round(
+            bgmVolumeValue * 100
+        );
+
+    sfxVolume.value =
+        Math.round(
+            sfxVolumeValue * 100
+        );
+
+}
+
+
+// ==============================
+// 저장된 설정 불러오기
+// ==============================
+
+function loadSettings() {
+
+    const savedSettings =
+        localStorage.getItem(
+            "pickOneSettings"
+        );
+
+
+    if (savedSettings) {
+
+        try {
+
+            const settings =
+                JSON.parse(
+                    savedSettings
+                );
+
+
+            if (
+                typeof settings.bgmEnabled
+                === "boolean"
+            ) {
+
+                bgmEnabled =
+                    settings.bgmEnabled;
+
+            }
+
+
+            if (
+                typeof settings.sfxEnabled
+                === "boolean"
+            ) {
+
+                sfxEnabled =
+                    settings.sfxEnabled;
+
+            }
+
+
+            if (
+                typeof settings.bgmVolume
+                === "number"
+            ) {
+
+                bgmVolumeValue =
+                    settings.bgmVolume;
+
+            }
+
+
+            if (
+                typeof settings.sfxVolume
+                === "number"
+            ) {
+
+                sfxVolumeValue =
+                    settings.sfxVolume;
+
+            }
+
+        }
+        catch (error) {
+
+            console.log(
+                "설정 불러오기 실패:",
+                error
+            );
+
+        }
+
+    }
+
+
+    if (bgm) {
+
+        bgm.volume =
+            bgmVolumeValue;
+
+    }
+
+
+    updateSettingsUI();
+
+}
+
+
+loadSettings();
+
+// ==============================
+// 설정 모달 열기 / 닫기
+// ==============================
+
+function openSettings() {
+
+    settingsModal.classList.remove(
+        "hidden"
+    );
+
+}
+
+
+function closeSettings() {
+
+    settingsModal.classList.add(
+        "hidden"
+    );
+
+}
+
+
+settingsButton.addEventListener(
+    "click",
+    event => {
+
+        event.stopPropagation();
+
+        openSettings();
+
+    }
+);
+
+
+settingsCloseButton.addEventListener(
+    "click",
+    closeSettings
+);
+
+
+// 모달 바깥 영역 터치 시 닫기
+
+settingsModal.addEventListener(
+    "click",
+    event => {
+
+        if (
+            event.target ===
+            settingsModal
+        ) {
+
+            closeSettings();
+
+        }
+
+    }
+);
+
+// ==============================
+// 배경음악 ON / OFF
+// ==============================
+
+bgmToggle.addEventListener(
+    "click",
+    () => {
+
+        bgmEnabled =
+            !bgmEnabled;
+
+
+        if (bgmEnabled) {
+
+            bgm.volume =
+                bgmVolumeValue;
+
+
+            bgm.play()
+                .then(() => {
+
+                    bgmStarted =
+                        true;
+
+                })
+                .catch(error => {
+
+                    console.log(
+                        "배경음악 재생 실패:",
+                        error
+                    );
+
+                });
+
+        }
+        else {
+
+            bgm.pause();
+
+        }
+
+
+        updateSettingsUI();
+        saveSettings();
+
+    }
+);
+
+// ==============================
+// 효과음 ON / OFF
+// ==============================
+
+sfxToggle.addEventListener(
+    "click",
+    () => {
+
+        sfxEnabled =
+            !sfxEnabled;
+
+
+        updateSettingsUI();
+        saveSettings();
+
+    }
+);
+
+// ==============================
+// 배경음악 볼륨
+// ==============================
+
+bgmVolume.addEventListener(
+    "input",
+    () => {
+
+        bgmVolumeValue =
+            Number(
+                bgmVolume.value
+            ) / 100;
+
+
+        if (bgm) {
+
+            bgm.volume =
+                bgmVolumeValue;
+
+        }
+
+
+        saveSettings();
+
+    }
+);
+
+// ==============================
+// 효과음 볼륨
+// ==============================
+
+sfxVolume.addEventListener(
+    "input",
+    () => {
+
+        sfxVolumeValue =
+            Number(
+                sfxVolume.value
+            ) / 100;
+
+
+        saveSettings();
+
+    }
 );
 
 // ==============================

@@ -265,6 +265,131 @@
 
     </main>
 
+    <!-- =========================
+         설정 모달
+    ========================== -->
+
+    <div
+        id="settingsModal"
+        class="modal-overlay hidden"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="settingsTitle"
+    >
+
+        <div class="settings-panel">
+
+            <div class="settings-header">
+
+                <div>
+                    <p class="settings-label">
+                        PICK:ONE
+                    </p>
+
+                    <h2 id="settingsTitle">
+                        설정
+                    </h2>
+                </div>
+
+
+                <button
+                    id="settingsCloseButton"
+                    class="modal-close-btn"
+                    type="button"
+                    aria-label="설정 닫기"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <!-- 배경음악 -->
+
+            <div class="setting-item">
+
+                <div class="setting-row">
+
+                    <div class="setting-text">
+                        <strong>
+                            배경음악
+                        </strong>
+
+                        <span>
+                            게임 배경음악을 조절합니다
+                        </span>
+                    </div>
+
+
+                    <button
+                        id="bgmToggle"
+                        class="setting-toggle active"
+                        type="button"
+                        aria-pressed="true"
+                    >
+                        ON
+                    </button>
+
+                </div>
+
+
+                <input
+                    id="bgmVolume"
+                    class="volume-slider"
+                    type="range"
+                    min="0"
+                    max="100"
+                    value="35"
+                    aria-label="배경음악 볼륨"
+                >
+
+            </div>
+
+
+            <!-- 효과음 -->
+
+            <div class="setting-item">
+
+                <div class="setting-row">
+
+                    <div class="setting-text">
+                        <strong>
+                            효과음
+                        </strong>
+
+                        <span>
+                            카드 효과음을 조절합니다
+                        </span>
+                    </div>
+
+
+                    <button
+                        id="sfxToggle"
+                        class="setting-toggle active"
+                        type="button"
+                        aria-pressed="true"
+                    >
+                        ON
+                    </button>
+
+                </div>
+
+
+                <input
+                    id="sfxVolume"
+                    class="volume-slider"
+                    type="range"
+                    min="0"
+                    max="100"
+                    value="100"
+                    aria-label="효과음 볼륨"
+                >
+
+            </div>
+
+        </div>
+
+    </div>
 
     <!-- =========================
          효과음
