@@ -84,6 +84,11 @@ const settingsCloseButton =
         "settingsCloseButton"
     );
 
+const settingsConfirmButton =
+    document.getElementById(
+        "settingsConfirmButton"
+    );
+
 const bgmToggle =
     document.getElementById(
         "bgmToggle"
@@ -102,6 +107,11 @@ const bgmVolume =
 const sfxVolume =
     document.getElementById(
         "sfxVolume"
+    );
+
+const backToast =
+    document.getElementById(
+        "backToast"
     );
 
 // ==============================
@@ -418,15 +428,42 @@ settingsButton.addEventListener(
 );
 
 
+// ==============================
+// 설정 X 버튼
+// ==============================
+
 settingsCloseButton.addEventListener(
     "click",
     () => {
 
-        // 닫기 버튼 효과음
+        // X 버튼 효과음
         playSound(
             checkSound
         );
 
+
+        // 설정창 닫기
+        closeSettings();
+
+    }
+);
+
+
+// ==============================
+// 설정 확인 버튼
+// ==============================
+
+settingsConfirmButton.addEventListener(
+    "click",
+    () => {
+
+        // 확인 효과음
+        playSound(
+            checkSound
+        );
+
+
+        // 설정창 닫기
         closeSettings();
 
     }
@@ -1054,6 +1091,145 @@ deckLabel.textContent =
 
             }
         );
+
+    }
+);
+
+// ==============================
+// 우클릭 메뉴 방지
+// ==============================
+
+document.addEventListener(
+    "contextmenu",
+    event => {
+
+        event.preventDefault();
+
+    }
+);
+
+// ==============================
+// 뒤로가기 토스트
+// ==============================
+
+let backToastTimer = null;
+
+
+function showBackToast() {
+
+    // 기존 타이머가 있다면 제거
+    if (backToastTimer) {
+
+        clearTimeout(
+            backToastTimer
+        );
+
+    }
+
+
+    // 토스트 표시
+    backToast.classList.add(
+        "show"
+    );
+
+
+    // 2초 후 숨김
+    backToastTimer =
+        setTimeout(
+            () => {
+
+                backToast.classList.remove(
+                    "show"
+                );
+
+                backToastTimer = null;
+
+            },
+            2000
+        );
+
+}
+
+// ==============================
+// 뒤로가기 이탈 방지
+// ==============================
+
+let backPressedOnce = false;
+
+
+// 현재 페이지 상태를 히스토리에 한 번 추가
+history.pushState(
+    { pickOne: true },
+    "",
+    location.href
+);
+
+
+window.addEventListener(
+    "popstate",
+    () => {
+
+        // 설정창이 열려 있다면
+        // 뒤로가기로 설정창만 닫기
+        if (
+            !settingsModal.classList.contains(
+                "hidden"
+            )
+        ) {
+
+            closeSettings();
+
+
+            // 현재 페이지 상태 유지
+            history.pushState(
+                { pickOne: true },
+                "",
+                location.href
+            );
+
+            return;
+
+        }
+
+
+        // 첫 번째 뒤로가기
+if (!backPressedOnce) {
+
+    backPressedOnce = true;
+
+
+    // 페이지 이탈 방지
+    history.pushState(
+        { pickOne: true },
+        "",
+        location.href
+    );
+
+
+    // 뒤로가기 안내 표시
+    showBackToast();
+
+
+    // 2초가 지나면
+    // 다시 첫 번째 상태로 초기화
+    setTimeout(
+        () => {
+
+            backPressedOnce = false;
+
+        },
+        2000
+    );
+
+
+    return;
+
+}
+
+
+        // 두 번째 뒤로가기
+        // 실제 이전 페이지로 이동
+        history.back();
 
     }
 );

@@ -1,5 +1,12 @@
 * {
     box-sizing: border-box;
+
+    /* 텍스트 선택 방지 */
+    user-select: none;
+    -webkit-user-select: none;
+
+    /* 모바일 터치 하이라이트 제거 */
+    -webkit-tap-highlight-color: transparent;
 }
 
 html,
@@ -1173,6 +1180,66 @@ body.theme-faith {
     transform-origin: left center;
 }
 
+/* =========================
+   설정 확인 버튼
+========================= */
+
+.settings-confirm-btn {
+    width: 40%;
+
+    display: block;
+    margin: 20px auto 0;
+
+    padding: 14px 16px;
+
+    border: none;
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--deck-accent) 0%,
+            var(--deck-accent-soft) 100%
+        );
+
+    color: #ffffff;
+
+    font-size: 14px;
+    font-weight: 800;
+
+    font-family: inherit;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 6px 16px
+        var(--deck-shadow);
+
+    transition:
+        transform 0.18s ease,
+        box-shadow 0.18s ease;
+}
+
+
+/* 마우스를 올렸을 때 */
+
+.settings-confirm-btn:hover {
+    transform:
+        translateY(-1px);
+
+    box-shadow:
+        0 8px 20px
+        var(--deck-shadow);
+}
+
+
+/* 버튼을 누르는 순간 */
+
+.settings-confirm-btn:active {
+    transform:
+        scale(0.97);
+}
+
 .modal-close-btn {
     width: 34px;
     height: 34px;
@@ -1596,6 +1663,61 @@ body.theme-faith {
             translateY(0)
             scale(1);
     }
+}
+
+/* =========================
+   뒤로가기 토스트
+========================= */
+
+.back-toast {
+    position: fixed;
+
+    left: 50%;
+    bottom: 28px;
+
+    z-index: 2000;
+
+    padding:
+        11px 18px;
+
+    border-radius: 100px;
+
+    background:
+        rgba(38, 35, 44, 0.88);
+
+    color: #ffffff;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    white-space: nowrap;
+
+    box-shadow:
+        0 6px 18px
+        rgba(0, 0, 0, 0.16);
+
+    opacity: 0;
+
+    transform:
+        translateX(-50%)
+        translateY(10px);
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.22s ease,
+        transform 0.22s ease;
+}
+
+
+/* 토스트 표시 */
+
+.back-toast.show {
+    opacity: 1;
+
+    transform:
+        translateX(-50%)
+        translateY(0);
 }
 
 /* =========================
