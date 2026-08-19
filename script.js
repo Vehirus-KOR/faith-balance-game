@@ -37,6 +37,9 @@ const nextButton =
 const categoryText =
     document.getElementById("category");
 
+const cardNumberText =
+    document.getElementById("cardNumber");
+
 const difficultyText =
     document.getElementById("difficulty");
 
@@ -210,16 +213,21 @@ function drawRandomCard() {
     }
 
 
-    // 카테고리
-    categoryText.textContent =
-        selectedCard.category;
+// 카테고리
+categoryText.textContent =
+    selectedCard.category;
 
 
-    // 난이도
-    difficultyText.textContent =
-        getDifficultyStars(
-            selectedCard.difficulty
-        );
+// 카드 번호
+cardNumberText.textContent =
+    `#${selectedCard.id}`;
+
+
+// 난이도
+difficultyText.textContent =
+    getDifficultyStars(
+        selectedCard.difficulty
+    );
 
 
     // 질문

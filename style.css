@@ -616,10 +616,46 @@ body.theme-faith {
 
     padding: 0 3px;
 
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 800;
 
     color: var(--deck-accent);
+
+    letter-spacing: 0.2px;
+}
+
+#category {
+    background:
+        linear-gradient(
+            135deg,
+            var(--deck-accent) 0%,
+            var(--deck-accent-soft) 100%
+        );
+
+    background-clip: text;
+    -webkit-background-clip: text;
+
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+}
+
+#difficulty {
+    color: var(--deck-accent-soft);
+}
+
+.card-category-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    gap: 4px;
+}
+
+#cardNumber {
+    color: var(--deck-accent);
+
+    font-size: 20px;
+    font-weight: 600;
 
     letter-spacing: 0.2px;
 }
