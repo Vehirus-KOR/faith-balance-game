@@ -1006,7 +1006,7 @@ cardElement.innerHTML = `
 // ==========================
 
 cardElement.addEventListener(
-    "click",
+    "button",
     () => {
 
         playSound(

@@ -3015,7 +3015,6 @@ body.collection-open {
         aspect-ratio: 5 / 7;
         height: auto;
     }
-}
 
     .collection-modal-overlay {
         padding: 8px;
@@ -3109,6 +3108,7 @@ body.collection-open {
     .collection-card-vs {
         font-size: 5.5px;
     }
+}
 
 /* =========================
    접근성:
