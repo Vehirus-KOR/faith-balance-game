@@ -520,7 +520,103 @@
 
     </div>
 
+<!-- =========================
+     카드 도감 상세보기
+========================== -->
 
+<div
+    id="collectionDetailModal"
+    class="collection-detail-overlay hidden"
+    role="dialog"
+    aria-modal="true"
+    aria-label="질문 카드 상세보기"
+>
+
+    <div
+        id="collectionDetailCard"
+        class="collection-detail-card"
+    >
+
+
+        <!-- 닫기 버튼 -->
+
+        <button
+            id="collectionDetailCloseButton"
+            class="modal-close-btn collection-detail-close"
+            type="button"
+            aria-label="카드 상세보기 닫기"
+        >
+            ×
+        </button>
+
+
+        <!-- 카드 정보 -->
+
+        <div class="collection-detail-info">
+
+            <div class="collection-detail-category-group">
+
+                <span
+                    id="collectionDetailCategory"
+                    class="collection-detail-category"
+                >
+                </span>
+
+                <span
+                    id="collectionDetailNumber"
+                    class="collection-detail-number"
+                >
+                </span>
+
+            </div>
+
+
+            <span
+                id="collectionDetailDifficulty"
+                class="collection-detail-difficulty"
+            >
+            </span>
+
+        </div>
+
+
+        <!-- 질문 -->
+
+        <p
+            id="collectionDetailQuestion"
+            class="collection-detail-question"
+        >
+        </p>
+
+
+        <!-- 선택지 A -->
+
+        <div
+            id="collectionDetailOptionA"
+            class="collection-detail-option"
+        >
+        </div>
+
+
+        <!-- VS -->
+
+        <strong class="collection-detail-vs">
+            VS
+        </strong>
+
+
+        <!-- 선택지 B -->
+
+        <div
+            id="collectionDetailOptionB"
+            class="collection-detail-option"
+        >
+        </div>
+
+
+    </div>
+
+</div>
 
     <!-- =========================
          설정 모달
