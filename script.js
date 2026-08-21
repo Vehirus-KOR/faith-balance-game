@@ -66,6 +66,39 @@ const filterButtons =
     document.querySelectorAll(".filter-btn");
 
 // ==============================
+// 카드 도감 요소 가져오기
+// ==============================
+
+const collectionButton =
+    document.getElementById(
+        "collectionButton"
+    );
+
+const collectionModal =
+    document.getElementById(
+        "collectionModal"
+    );
+
+const collectionCloseButton =
+    document.getElementById(
+        "collectionCloseButton"
+    );
+
+const collectionGrid =
+    document.getElementById(
+        "collectionGrid"
+    );
+
+const collectionFilterButtons =
+    document.querySelectorAll(
+        ".collection-filter-btn"
+    );
+
+
+let selectedCollectionCategory =
+    "전체";
+
+// ==============================
 // 설정 요소 가져오기
 // ==============================
 
@@ -694,6 +727,330 @@ function getDifficultyStars(level) {
 
 }
 
+// ==============================
+// 카드 도감
+// ==============================
+
+function getCollectionCards() {
+
+    let collectionCards =
+        [...cards];
+
+
+    if (
+        selectedCollectionCategory
+        !== "전체"
+    ) {
+
+        collectionCards =
+            collectionCards.filter(
+                card =>
+                    card.category ===
+                    selectedCollectionCategory
+            );
+
+    }
+
+
+    // 카드 번호 순서대로 정렬
+
+    collectionCards.sort(
+        (a, b) =>
+            a.id - b.id
+    );
+
+
+    return collectionCards;
+
+}
+
+
+// ==============================
+// 도감 카드 생성
+// ==============================
+
+function createCollectionCard(card) {
+
+    const cardElement =
+        document.createElement(
+            "article"
+        );
+
+
+    cardElement.classList.add(
+        "collection-card"
+    );
+
+
+    // 카드 자체 카테고리에 따라
+    // 개별 테마 적용
+
+    if (
+        card.category === "일반"
+    ) {
+
+        cardElement.classList.add(
+            "collection-card-normal"
+        );
+
+    }
+
+
+    if (
+        card.category === "신앙"
+    ) {
+
+        cardElement.classList.add(
+            "collection-card-faith"
+        );
+
+    }
+
+
+    cardElement.innerHTML = `
+
+        <div class="collection-card-info">
+
+            <div class="collection-card-category-group">
+
+                <span class="collection-card-category">
+                    ${card.category}
+                </span>
+
+                <span class="collection-card-number">
+                    #${card.id}
+                </span>
+
+            </div>
+
+
+            <span class="collection-card-difficulty">
+                ${getDifficultyStars(
+                    card.difficulty
+                )}
+            </span>
+
+        </div>
+
+
+        <p class="collection-card-question">
+            ${card.question}
+        </p>
+
+
+        <div class="collection-card-option">
+            ${card.optionA}
+        </div>
+
+
+        <strong class="collection-card-vs">
+            VS
+        </strong>
+
+
+        <div class="collection-card-option">
+            ${card.optionB}
+        </div>
+
+    `;
+
+
+    return cardElement;
+
+}
+
+
+// ==============================
+// 도감 카드 목록 출력
+// ==============================
+
+function renderCollection() {
+
+    const collectionCards =
+        getCollectionCards();
+
+
+    // 기존 카드 제거
+
+    collectionGrid.innerHTML =
+        "";
+
+
+    // 카드 생성
+
+    collectionCards.forEach(
+        card => {
+
+            const cardElement =
+                createCollectionCard(
+                    card
+                );
+
+
+            collectionGrid.appendChild(
+                cardElement
+            );
+
+        }
+    );
+
+
+    // 카테고리 변경 시
+    // 스크롤을 맨 위로 이동
+
+    collectionGrid.scrollTop =
+        0;
+
+}
+
+
+// ==============================
+// 도감 열기
+// ==============================
+
+function openCollection() {
+
+    renderCollection();
+
+
+    collectionModal.classList.remove(
+        "hidden"
+    );
+
+
+    // 뒤의 페이지가
+    // 같이 스크롤되지 않도록 잠금
+
+    document.body.classList.add(
+        "collection-open"
+    );
+
+}
+
+
+// ==============================
+// 도감 닫기
+// ==============================
+
+function closeCollection() {
+
+    collectionModal.classList.add(
+        "hidden"
+    );
+
+
+    document.body.classList.remove(
+        "collection-open"
+    );
+
+}
+
+
+// ==============================
+// 도감 버튼
+// ==============================
+
+collectionButton.addEventListener(
+    "click",
+    event => {
+
+        event.stopPropagation();
+
+
+        playSound(
+            checkSound
+        );
+
+
+        openCollection();
+
+    }
+);
+
+
+// ==============================
+// 도감 X 버튼
+// ==============================
+
+collectionCloseButton.addEventListener(
+    "click",
+    () => {
+
+        playSound(
+            checkSound
+        );
+
+
+        closeCollection();
+
+    }
+);
+
+
+// ==============================
+// 도감 바깥 영역 터치
+// ==============================
+
+collectionModal.addEventListener(
+    "click",
+    event => {
+
+        if (
+            event.target ===
+            collectionModal
+        ) {
+
+            closeCollection();
+
+        }
+
+    }
+);
+
+
+// ==============================
+// 도감 카테고리
+// ==============================
+
+collectionFilterButtons.forEach(
+    button => {
+
+        button.addEventListener(
+            "click",
+            () => {
+
+                playSound(
+                    checkSound
+                );
+
+
+                collectionFilterButtons.forEach(
+                    btn => {
+
+                        btn.classList.remove(
+                            "active"
+                        );
+
+                    }
+                );
+
+
+                button.classList.add(
+                    "active"
+                );
+
+
+                selectedCollectionCategory =
+                    button.dataset.category;
+
+
+                renderCollection();
+
+            }
+        );
+
+    }
+);
 
 // ==============================
 // 현재 카테고리에 맞는 카드 가져오기
@@ -1187,8 +1544,32 @@ window.addEventListener(
     "popstate",
     () => {
 
+        // 도감이 열려 있다면
+        // 뒤로가기로 도감만 닫기
+
+        if (
+            !collectionModal.classList.contains(
+                "hidden"
+            )
+        ) {
+
+            closeCollection();
+
+
+            history.pushState(
+                { pickOne: true },
+                "",
+                location.href
+            );
+
+
+            return;
+
+        }
+
         // 설정창이 열려 있다면
         // 뒤로가기로 설정창만 닫기
+
         if (
             !settingsModal.classList.contains(
                 "hidden"

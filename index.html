@@ -423,10 +423,104 @@
 
     </div>
 
-
     <!-- =========================
-         설정 모달
+         카드 도감 모달
     ========================== -->
+
+    <div
+        id="collectionModal"
+        class="modal-overlay collection-modal-overlay hidden"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="collectionTitle"
+    >
+
+        <div class="collection-panel">
+
+
+            <!-- 도감 헤더 -->
+
+<div class="collection-header">
+
+    <div>
+
+        <div class="collection-brand">
+
+            <strong class="collection-brand-title">
+                PICK:ONE
+            </strong>
+
+            <span class="collection-brand-subtitle">
+                BALANCE CARD GAME
+            </span>
+
+        </div>
+
+
+        <h2 id="collectionTitle">
+            질문 카드 도감
+        </h2>
+
+    </div>
+
+
+    <button
+        id="collectionCloseButton"
+        class="modal-close-btn"
+        type="button"
+        aria-label="카드 도감 닫기"
+    >
+        ×
+    </button>
+
+</div>
+
+
+            <!-- 도감 카테고리 -->
+
+            <div class="collection-filter-area">
+
+                <button
+                    class="collection-filter-btn active"
+                    type="button"
+                    data-category="전체"
+                >
+                    전체
+                </button>
+
+                <button
+                    class="collection-filter-btn"
+                    type="button"
+                    data-category="일반"
+                >
+                    일반
+                </button>
+
+                <button
+                    class="collection-filter-btn"
+                    type="button"
+                    data-category="신앙"
+                >
+                    신앙
+                </button>
+
+            </div>
+
+
+            <!-- 카드 목록 -->
+
+            <div
+                id="collectionGrid"
+                class="collection-grid"
+            >
+            </div>
+
+
+        </div>
+
+    </div>
+
+
 
     <!-- =========================
          설정 모달

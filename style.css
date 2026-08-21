@@ -1304,6 +1304,587 @@ body.theme-faith {
 }
 
 /* =========================
+   카드 도감
+========================= */
+
+.collection-modal-overlay {
+    z-index: 2500;
+
+    padding: 14px;
+}
+
+
+/* 도감 전체 패널 */
+
+.collection-panel {
+    width: 100%;
+    max-width: 460px;
+
+    height: min(92dvh, 820px);
+
+    display: flex;
+    flex-direction: column;
+
+    padding:
+        22px 18px
+        16px;
+
+    border:
+        1px solid
+        rgba(126, 103, 190, 0.18);
+
+    border-radius: 24px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #fffefa 0%,
+            #f8f5ee 100%
+        );
+
+    box-shadow:
+        0 24px 60px
+        rgba(72, 60, 100, 0.24);
+
+    overflow: hidden;
+
+    animation:
+        settingsPanelShow
+        0.28s
+        cubic-bezier(
+            0.2,
+            0.9,
+            0.3,
+            1.1
+        );
+}
+
+
+/* =========================
+   도감 헤더
+========================= */
+
+.collection-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    flex-shrink: 0;
+
+    margin-bottom: 18px;
+
+    text-align: left;
+}
+
+
+.collection-header h2 {
+    margin: 0;
+
+    color: #26232c;
+
+    font-size: 25px;
+    font-weight: 700;
+}
+
+
+/* =========================
+   도감 브랜드
+========================= */
+
+.collection-brand {
+    display: flex;
+    align-items: baseline;
+
+    gap: 8px;
+
+    margin-bottom: 10px;
+}
+
+
+.collection-brand-title {
+    color: #222;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    line-height: 1;
+
+    letter-spacing: -0.4px;
+}
+
+
+.collection-brand-subtitle {
+    display: inline-block;
+
+    color: #33332d;
+
+    font-size: 9px;
+    font-weight: 700;
+
+    letter-spacing: 1.4px;
+
+    line-height: 1;
+
+    transform: scale(0.75);
+    transform-origin: left center;
+}
+
+
+
+/* =========================
+   도감 카테고리
+========================= */
+
+.collection-filter-area {
+    display: flex;
+
+    flex-shrink: 0;
+
+    gap: 7px;
+
+    margin-bottom: 14px;
+}
+
+
+.collection-filter-btn {
+    position: relative;
+
+    flex: 1;
+
+    padding:
+        10px 6px;
+
+    border:
+        1px solid
+        rgba(126, 103, 190, 0.18);
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #fffefa 0%,
+            #f8f5ee 100%
+        );
+
+    color: #6d6575;
+
+    font-family: inherit;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 4px 10px
+        rgba(72, 60, 100, 0.07);
+
+    transition:
+        transform 0.18s ease,
+        color 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.collection-filter-btn:active {
+    transform:
+        scale(0.96);
+}
+
+
+.collection-filter-btn.active {
+    color: #ffffff;
+
+    border-color: transparent;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--deck-accent) 0%,
+            var(--deck-accent-soft) 100%
+        );
+
+    box-shadow:
+        0 5px 14px
+        var(--deck-shadow);
+}
+
+
+/* =========================
+   도감 카드 목록
+========================= */
+
+.collection-grid {
+    flex: 1;
+    min-height: 0;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    /* 핵심 */
+    grid-auto-rows: max-content;
+
+    align-content: start;
+    align-items: start;
+
+    gap: 8px;
+
+    padding:
+        2px 2px
+        14px;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    overscroll-behavior: contain;
+
+    -webkit-overflow-scrolling: touch;
+
+    touch-action: pan-y;
+}
+
+
+/* =========================
+   도감 질문 카드
+========================= */
+
+.collection-card {
+    position: relative;
+
+    width: 100%;
+    height: auto;
+
+    aspect-ratio: 5 / 7;
+
+    min-width: 0;
+    min-height: 0;
+
+    align-self: start;
+
+    display: flex;
+    flex-direction: column;
+
+    padding:
+        17px 9px
+        10px;
+
+    border:
+        1px solid
+        var(--collection-primary);
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #fffdf8 0%,
+            #fbf8f2 100%
+        );
+
+    color: #26232c;
+
+    box-shadow:
+        0 5px 12px
+        rgba(72, 60, 100, 0.10),
+        inset 0 0 0 1px
+        rgba(255, 255, 255, 0.9);
+
+    overflow: hidden;
+}
+
+
+/* 일반 카드 */
+
+.collection-card-normal {
+    --collection-primary:
+        #f2d89b;
+
+    --collection-secondary:
+        #f2b8a0;
+
+    --collection-accent:
+        #d59b55;
+
+    --collection-accent-soft:
+        #e88972;
+}
+
+
+/* 신앙 카드 */
+
+.collection-card-faith {
+    --collection-primary:
+        #9CCAF0;
+
+    --collection-secondary:
+        #6FA8DC;
+
+    --collection-accent:
+        #3978B8;
+
+    --collection-accent-soft:
+        #5B9BD5;
+}
+
+
+/* 내부 프레임 */
+
+.collection-card::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 5px;
+
+    border:
+        1px solid
+        var(--collection-accent);
+
+    border-radius: 9px;
+
+    box-shadow:
+        inset 0 0 0 2px
+        #fffdf8;
+
+    pointer-events: none;
+}
+
+
+/* 상단 장식 */
+
+.collection-card::after {
+    content: "✦";
+
+    position: absolute;
+
+    top: 4px;
+    left: 50%;
+
+    padding:
+        0 4px;
+
+    background:
+        #fffdf8;
+
+    color:
+        var(--collection-accent);
+
+    font-size: 6px;
+
+    transform:
+        translateX(-50%);
+}
+
+
+/* =========================
+   도감 카드 정보
+========================= */
+
+.collection-card-info {
+    position: relative;
+    z-index: 1;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    gap: 3px;
+
+    margin-bottom: 7px;
+
+    color:
+        var(--collection-accent);
+}
+
+
+.collection-card-category-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    gap: 1px;
+}
+
+
+.collection-card-category {
+    font-size: 7px;
+    font-weight: 800;
+}
+
+
+.collection-card-number {
+    font-size: 9px;
+    font-weight: 700;
+}
+
+
+.collection-card-difficulty {
+    color:
+        var(--collection-accent-soft);
+
+    font-size: 6px;
+    font-weight: 800;
+
+    white-space: nowrap;
+}
+
+
+/* =========================
+   도감 카드 질문
+========================= */
+
+.collection-card-question {
+    position: relative;
+    z-index: 1;
+
+    flex: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin:
+        0 0
+        4px;
+
+    padding:
+        0 3px
+        6px;
+
+    color: #24212a;
+
+    font-size: 8px;
+    font-weight: 800;
+
+    line-height: 1.35;
+
+    text-align: center;
+
+    word-break: keep-all;
+}
+
+
+/* 질문 아래 장식선 */
+
+.collection-card-question::after {
+    content: "";
+
+    position: absolute;
+
+    left: 8%;
+    right: 8%;
+    bottom: 0;
+
+    height: 1px;
+
+    background:
+        var(--collection-primary);
+
+    opacity: 0.9;
+}
+
+
+/* =========================
+   도감 선택지
+========================= */
+
+.collection-card-option {
+    position: relative;
+    z-index: 1;
+
+    min-height: 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding:
+        3px 2px;
+
+    color: #302c36;
+
+    font-size: 6.7px;
+    font-weight: 500;
+
+    line-height: 1.25;
+
+    text-align: center;
+
+    word-break: keep-all;
+}
+
+
+.collection-card-vs {
+    position: relative;
+    z-index: 1;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr auto 1fr;
+
+    align-items: center;
+
+    gap: 3px;
+
+    margin:
+        1px 0;
+
+    color:
+        var(--collection-accent);
+
+    font-size: 6px;
+    font-weight: 900;
+}
+
+
+.collection-card-vs::before,
+.collection-card-vs::after {
+    content: "";
+
+    display: block;
+
+    height: 1px;
+
+    background:
+        var(--collection-primary);
+}
+
+
+/* =========================
+   도감 스크롤바
+========================= */
+
+.collection-grid::-webkit-scrollbar {
+    width: 4px;
+}
+
+
+.collection-grid::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+
+.collection-grid::-webkit-scrollbar-thumb {
+    border-radius: 100px;
+
+    background:
+        rgba(110, 102, 120, 0.24);
+}
+
+
+/* 도감이 열렸을 때
+   배경 페이지 스크롤 방지 */
+
+body.collection-open {
+    overflow: hidden;
+}
+
+/* =========================
    설정 모달
 ========================= */
 
@@ -2053,6 +2634,98 @@ body.theme-faith {
     }
 }
 
+    .collection-modal-overlay {
+        padding: 8px;
+    }
+
+
+    .collection-panel {
+        height: 94dvh;
+
+        padding:
+            18px 11px
+            12px;
+
+        border-radius: 20px;
+    }
+
+
+    .collection-header {
+        margin-bottom: 14px;
+    }
+
+
+    .collection-header h2 {
+        font-size: 19px;
+    }
+
+
+    .collection-filter-area {
+        gap: 5px;
+
+        margin-bottom: 10px;
+    }
+
+
+    .collection-filter-btn {
+        padding:
+            9px 4px;
+
+        font-size: 11px;
+    }
+
+
+    .collection-grid {
+        gap: 5px;
+    }
+
+
+    .collection-card {
+        padding:
+            15px 7px
+            8px;
+
+        border-radius: 10px;
+    }
+
+
+    .collection-card::before {
+        inset: 4px;
+
+        border-radius: 7px;
+    }
+
+
+    .collection-card-category {
+        font-size: 6px;
+    }
+
+
+    .collection-card-number {
+        font-size: 8px;
+    }
+
+
+    .collection-card-difficulty {
+        font-size: 5.3px;
+    }
+
+
+    .collection-card-question {
+        font-size: 7px;
+    }
+
+
+    .collection-card-option {
+        min-height: 22px;
+
+        font-size: 5.9px;
+    }
+
+
+    .collection-card-vs {
+        font-size: 5.5px;
+    }
 
 /* =========================
    접근성:
